@@ -1,4 +1,5 @@
 import React from "react";
+import { json } from "react-router-dom";
 
 const AddUser = () => {
   const handleAddUser = (event) => {
@@ -6,6 +7,18 @@ const AddUser = () => {
     const name = event.target.name.value;
     const email = event.target.email.value;
     const user = { name, email };
+
+    fetch("http://localhost:5000/user", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Succes", data);
+      });
   };
   return (
     <div>
