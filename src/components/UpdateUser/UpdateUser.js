@@ -17,7 +17,8 @@ const UpdateUser = () => {
     const email = event.target.email.value;
     const updatedUser = { name, email };
 
-    fetch("http://localhost:5000/user", {
+    const url = `http://localhost:5000/user/${id}`;
+    fetch(url, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
