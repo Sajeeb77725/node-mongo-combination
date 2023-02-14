@@ -7,6 +7,13 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
+
+  const handleUserDelete = (id) => {
+    const proceed = window.confirm("Do you want to delete this?");
+    if (proceed) {
+      console.log("deleting user with id", id);
+    }
+  };
   return (
     <div>
       <h2>This is Home.</h2>
@@ -15,6 +22,7 @@ const Home = () => {
         {users.map((user) => (
           <li key={user._id}>
             {user.name} : {user.email}
+            <button onClick={() => handleUserDelete(user._id)}>X</button>
           </li>
         ))}
       </ul>
